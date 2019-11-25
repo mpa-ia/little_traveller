@@ -1,11 +1,16 @@
 import React from 'react';
 import styles from './Header.scss';
+import PropTypes from 'prop-types';
 
-const Header = () => (
+const Header = props => (
     <header className={styles.component}>
-        <h1 className={styles.title}>Explore yourself</h1>
-        <img className={styles.image} src="https://images.pexels.com/photos/2104152/pexels-photo-2104152.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
+        <h1 className={styles.title}>{props.header}</h1>
+        <img className={styles.image} src={props.background}/>
     </header>
 );
 
+Header.propTypes = {
+    header: PropTypes.string,
+    background: PropTypes.string,
+};
 export default Header;
