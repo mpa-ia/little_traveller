@@ -1,10 +1,11 @@
 import React from 'react';
+import Header from '../Header/Header';
 
 class App extends React.Component {
     render() {
         return (
             <div>
-                <h1>Little Traveller</h1>
+                <Header />
             </div>
         )
     }

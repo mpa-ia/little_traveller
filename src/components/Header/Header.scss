@@ -1,0 +1,25 @@
+@import '../../styles/settings.scss';
+
+.component {
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+.title {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    font-size: ($base-size * 2.5);
+    text-transform: uppercase;
+    color: $color-light-shades;
+    transform: translate(-50%,-50%);
+    font-family: $font-header;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
