@@ -1,0 +1,19 @@
+@import '../../styles/settings.scss';
+
+.component {
+    flex: 0 0 30%;
+    margin: $base-size;
+}
+
+.photo {
+    width: 100%;
+    object-fit: cover;
+}
+
+.destination {
+
+}
+
+.description {
+
+}
