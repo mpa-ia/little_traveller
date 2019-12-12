@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import Button from '../Button/Button';
 
 import './Autocomplete.scss';
 
@@ -147,6 +148,7 @@ class Autocomplete extends Component {
           value={userInput}
         />
         {suggestionsListComponent}
+        <Button>Search</Button>
       </Fragment>
     );
   }
