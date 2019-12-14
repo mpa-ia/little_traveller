@@ -1,8 +1,5 @@
 import {combineReducers, createStore} from 'redux';
-// import initialStoreData from '../data/dataStore';
-
-// import searchStringReducer from './searchStringRedux';
-
+import autocompleteRedux from './AutocompleteRedux';
 
 // define initial state and shallow-merge initial data
 const initialState = {
@@ -11,7 +8,7 @@ const initialState = {
 
 // define reducers
 const reducers = {
-  // userInput: searchStringReducer,
+  userInput: autocompleteRedux,
 };
 
 // add blank reducers for initial state properties without reducers

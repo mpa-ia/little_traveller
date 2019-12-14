@@ -1,31 +1,30 @@
-import React, { Component, Fragment } from "react";
+import React, { /* Component, */ Fragment } from "react";
 import PropTypes from "prop-types";
 import Button from '../Button/Button';
 
 import './Autocomplete.scss';
 
-class Autocomplete extends Component {
+class Autocomplete extends React.Component {
   static propTypes = {
-    suggestions: PropTypes.instanceOf(Array)
-  };
+    suggestions: PropTypes.instanceOf(Array),
+    changeUserInput: PropTypes.func,
+    userInput: PropTypes.string,
+  }
 
   static defaultProps = {
-    suggestions: []
-  };
+    suggestions: [],
+    userInput: '',
+  }
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      // The active selection's index
-      activeSuggestion: 0,
-      // The suggestions that match the user's input
-      filteredSuggestions: [],
-      // Whether or not the suggestion list is shown
-      showSuggestions: false,
-      // What the user has entered
-      userInput: ""
-    };
+  state = {
+    // The active selection's index
+    activeSuggestion: 0,
+    // The suggestions that match the user's input
+    filteredSuggestions: [],
+    // Whether or not the suggestion list is shown
+    showSuggestions: false,
+    // What the user has entered
+    userInput: '',
   }
 
   // Event fired when the input value is changed
@@ -45,7 +44,7 @@ class Autocomplete extends Component {
       activeSuggestion: 0,
       filteredSuggestions,
       showSuggestions: true,
-      userInput: e.currentTarget.value
+      userInput: e.currentTarget.value,
     });
   };
 
@@ -56,9 +55,14 @@ class Autocomplete extends Component {
       activeSuggestion: 0,
       filteredSuggestions: [],
       showSuggestions: false,
-      userInput: e.currentTarget.innerText
+      userInput: e.currentTarget.innerText,
     });
+
   };
+
+  handleSearch() {
+    this.props.changeUserInput(this.state.userInput);
+  }
 
   // Event fired when the user presses a key down
   onKeyDown = e => {
@@ -148,7 +152,7 @@ class Autocomplete extends Component {
           value={userInput}
         />
         {suggestionsListComponent}
-        <Button>Search</Button>
+        <Button onClick={this.handleSearch()}>Search</Button>
       </Fragment>
     );
   }
