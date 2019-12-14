@@ -1,17 +1,17 @@
 import React from 'react';
-import { destinations, countries } from '../../data/dataStore';
-import shortid from 'shortid';
+import { countries } from '../../data/dataStore';
 import Container from '../Container/Container.js';
 import Section from '../Section/Section.js';
-import Destination from '../Destination/Destination.js';
-import Autocomplete from "../Autocomplete/AutocompleteContainer.js";
+import Autocomplete from '../Autocomplete/AutocompleteContainer.js';
+import PollutedCities from '../PollutedCities/PollutedCities.js';
 
 class MainPage extends React.Component {
     render () {
         return (
             <Container>
                 <Section>
-                    <Autocomplete suggestions={countries} /> 
+                    <Autocomplete suggestions={countries} />
+                    <PollutedCities country={'Poland'}/> 
                 </Section>
             </Container>
         );
