@@ -2,7 +2,7 @@ import React, { /* Component, */ Fragment } from "react";
 import PropTypes from "prop-types";
 import Button from '../Button/Button';
 
-import './Autocomplete.scss';
+import styles from './Autocomplete.scss';
 
 class Autocomplete extends React.Component {
   static propTypes = {
@@ -113,13 +113,13 @@ class Autocomplete extends React.Component {
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length) {
         suggestionsListComponent = (
-          <ul className="suggestions">
+          <ul className={styles.suggestions}>
             {filteredSuggestions.map((suggestion, index) => {
               let className;
 
               // Flag the active suggestion with a class
               if (index === activeSuggestion) {
-                className = "suggestion-active";
+                className = "suggestionActive";
               }
 
               return (
@@ -136,7 +136,7 @@ class Autocomplete extends React.Component {
         );
       } else {
         suggestionsListComponent = (
-          <div className="no-suggestions">
+          <div className={styles.noSuggestions}/* "no-suggestions" */>
             <em>No suggestions, you're on your own!</em>
           </div>
         );
@@ -145,13 +145,15 @@ class Autocomplete extends React.Component {
 
     return (
       <Fragment>
-        <input
-          type="text"
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          value={userInput}
-        />
-        {suggestionsListComponent}
+        <div>
+          <input
+            type="text"
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+            value={userInput}
+          />
+          {suggestionsListComponent}
+        </div>
         <Button onClick={this.handleSearch()}>Search</Button>
       </Fragment>
     );
