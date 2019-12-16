@@ -11,7 +11,7 @@ class MainPage extends React.Component {
     };
 
     componentDidMount() {
-        fetch('https://api.openaq.org/v1/latest')
+        fetch('https://api.openaq.org/v1/locations?country[]=DE&country[]=PL&country[]=FR&country[]=ES')
         .then(res => res.json())
         .then(parsedRes => this.setState({measurements: parsedRes.results}));
     }
