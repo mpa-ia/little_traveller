@@ -6,12 +6,22 @@ import Autocomplete from '../Autocomplete/AutocompleteContainer.js';
 import PollutedCities from '../PollutedCities/PollutedCities.js';
 
 class MainPage extends React.Component {
+    state = {
+        measurements: [],
+    };
+
+    componentDidMount() {
+        fetch('https://api.openaq.org/v1/latest')
+        .then(res => res.json())
+        .then(parsedRes => this.setState({measurements: parsedRes.results}));
+    }
+    
     render () {
         return (
             <Container>
-                <Section>
+                <Section title="Check Air Pollution in Europe">
                     <Autocomplete suggestions={countries} />
-                    <PollutedCities country={'Poland'}/> 
+                    <PollutedCities measurements={this.state.measurements}/> 
                 </Section>
             </Container>
         );

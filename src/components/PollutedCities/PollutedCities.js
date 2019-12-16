@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PollutedCities = () => {
+const PollutedCities = ({ measurements }) => {
+    console.log(measurements);
     return (
-    <ul>
-    {/* {this.props.country.map(country => {
-
-        })} */}
-        none
+        <ul>
+            {measurements.country == /* state.userInput */'Spain' ? measurements.map(() => {
+                <li>
+                    {measurements.country}
+                </li>
+            }) : ''}
     </ul>
     );
 };
 
 PollutedCities.propTypes = {
-    country: PropTypes.string,
+    measurements: PropTypes.array,
 };
 
 export default PollutedCities;
