@@ -1,3 +1,5 @@
+@import '../../styles/settings.scss';
+
 .component {
     display: flex;
     flex-wrap: wrap;
@@ -5,4 +7,7 @@
 
 .title {
     flex: 0 0 100%;
+    text-transform: uppercase;
+    font-size: $base-size * 2;
 }
+ 
