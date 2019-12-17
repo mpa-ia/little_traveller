@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Button from '../Button/Button';
 
 import styles from './Autocomplete.scss';
+import { countries } from "../../data/dataStore";
 
 class Autocomplete extends React.Component {
   static propTypes = {
@@ -31,11 +32,13 @@ class Autocomplete extends React.Component {
   onChange = e => {
     const { suggestions } = this.props;
     const userInput = e.currentTarget.value;
+    const countriesArray = suggestions.map(suggestion => suggestion.country);
 
     // Filter our suggestions that don't contain the user's input
-    const filteredSuggestions = suggestions.filter(
-      suggestion =>
-        suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+
+    const filteredSuggestions = countriesArray.filter(
+      countryName =>
+      countryName.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     );
 
     // Update the user input and filtered suggestions, reset the active

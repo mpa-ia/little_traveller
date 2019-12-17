@@ -36,9 +36,28 @@ export const destinations = [
     },
 ];
 
+/* export const countries = [
+    {PL: 'Poland',},
+    {ES: 'Spain',},
+    {DE: 'Germany',},
+    {FR: 'France',},
+]; */
+
 export const countries = [
-    'Poland',
-    'Spain',
-    'Germany',
-    'France',
+    {
+        country: 'Poland',
+        code: 'PL'
+    },
+    {
+        country: 'Spain',
+        code: 'ES'
+    },
+    {
+        country: 'Germany',
+        code: 'DE'
+    },
+    {
+        country: 'France',
+        code: 'FR'
+    },
 ];
