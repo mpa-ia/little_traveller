@@ -5,7 +5,7 @@ import pollutedCitiesRedux from './PollutedCitiesRedux';
 
 // define initial state and shallow-merge initial data
 const initialState = {
-    userInput: '',
+    userInput: localStorage.getItem('inputValue'),
     measurements: [],
     cities: [],
 };

@@ -47,6 +47,7 @@ class Autocomplete extends React.Component {
     });
 
     this.props.changeUserInput(userInput);
+    localStorage.setItem('inputValue', userInput);
   };
 
   // Event fired when the user clicks on a suggestion
@@ -58,6 +59,7 @@ class Autocomplete extends React.Component {
       showSuggestions: false,
     });
     this.props.changeUserInput(e.currentTarget.innerText);
+    localStorage.setItem('inputValue', e.currentTarget.innerText);
   };
 
   // Event fired when the user presses a key down
@@ -72,6 +74,7 @@ class Autocomplete extends React.Component {
         showSuggestions: false,
       });
       this.props.changeUserInput(filteredSuggestions[activeSuggestion]);
+      localStorage.setItem('inputValue', filteredSuggestions[activeSuggestion]);
     }
     // User pressed the up arrow, decrement the index
     else if (e.keyCode === 38) {
