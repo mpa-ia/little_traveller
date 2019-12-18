@@ -12,13 +12,13 @@ export const getFilteredCities = ({measurements, userInput}) => {
     } else {
         output = output.filter(data => (data.country == countryData.code));
     }
-    
-    // remove duplicates
+
+    // Remove duplicates & display 10 first results
     output = output.filter((data, index, self) => 
         index === self.findIndex(d => (
             d.city === data.city
         ))
-    );
+    ).slice(0,10);
 
     return output;
 };
