@@ -1,9 +1,8 @@
-import React, { /* Component, */ Fragment } from "react";
+import React, { Fragment } from 'react';
 import PropTypes from "prop-types";
 import Button from '../Button/Button';
 
 import styles from './Autocomplete.scss';
-import { countries } from "../../data/dataStore";
 
 class Autocomplete extends React.Component {
   static propTypes = {
@@ -15,6 +14,7 @@ class Autocomplete extends React.Component {
   static defaultProps = {
     suggestions: [],
     userInput: '',
+    changeUserInput: '',
   }
 
   state = {
@@ -24,8 +24,6 @@ class Autocomplete extends React.Component {
     filteredSuggestions: [],
     // Whether or not the suggestion list is shown
     showSuggestions: false,
-    // What the user has entered
-    userInput: '',
   }
 
   // Event fired when the input value is changed
@@ -47,8 +45,9 @@ class Autocomplete extends React.Component {
       activeSuggestion: 0,
       filteredSuggestions,
       showSuggestions: true,
-      userInput: e.currentTarget.value,
     });
+
+    this.props.changeUserInput(userInput);
   };
 
   // Event fired when the user clicks on a suggestion
@@ -58,13 +57,12 @@ class Autocomplete extends React.Component {
       activeSuggestion: 0,
       filteredSuggestions: [],
       showSuggestions: false,
-      userInput: e.currentTarget.innerText,
     });
-
+    this.props.changeUserInput(e.currentTarget.innerText);
   };
 
   handleSearch() {
-    this.props.changeUserInput(this.state.userInput);
+    // this.props.changeUserInput(this.state.userInput);
   }
 
   // Event fired when the user presses a key down
@@ -77,8 +75,8 @@ class Autocomplete extends React.Component {
       this.setState({
         activeSuggestion: 0,
         showSuggestions: false,
-        userInput: filteredSuggestions[activeSuggestion]
       });
+      this.props.changeUserInput(filteredSuggestions[activeSuggestion]);
     }
     // User pressed the up arrow, decrement the index
     else if (e.keyCode === 38) {
@@ -93,7 +91,6 @@ class Autocomplete extends React.Component {
       if (activeSuggestion - 1 === filteredSuggestions.length) {
         return;
       }
-
       this.setState({ activeSuggestion: activeSuggestion + 1 });
     }
   };
@@ -107,8 +104,10 @@ class Autocomplete extends React.Component {
         activeSuggestion,
         filteredSuggestions,
         showSuggestions,
-        userInput
-      }
+      },
+      props: {
+        userInput,
+      },
     } = this;
 
     let suggestionsListComponent;
@@ -139,7 +138,7 @@ class Autocomplete extends React.Component {
         );
       } else {
         suggestionsListComponent = (
-          <div className={styles.noSuggestions}/* "no-suggestions" */>
+          <div className={styles.noSuggestions}>
             <em>No suggestions, you're on your own!</em>
           </div>
         );
@@ -157,7 +156,7 @@ class Autocomplete extends React.Component {
           />
           {suggestionsListComponent}
         </div>
-        <Button onClick={this.handleSearch()}>Search</Button>
+        <Button onClick={this.handleSearch}>Search</Button>
       </Fragment>
     );
   }
