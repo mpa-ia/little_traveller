@@ -5,9 +5,9 @@ const PollutedCities = ({ cities }) => {
     console.log(cities);
     return (
         <ul>
-{/*             {cities.map(a => (            
+            {cities.map(a => (            
                 <li key={a.id}>{a.city}</li>
-            ))} */}
+            ))}
         </ul>
         );
     };

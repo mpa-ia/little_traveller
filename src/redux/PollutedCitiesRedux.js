@@ -3,8 +3,7 @@ export const getFilteredCities = ({measurements, userInput}) => {
 
     // filter by userInput
     if(userInput == 'ES') {
-        output = output.filter(city => city.country == userInput);
+        output = output.filter(data => (data.country == userInput));
     }
-
     return output;
 };
