@@ -1,27 +1,14 @@
 @import '../../styles/settings.scss';
 
 .component {
-    // flex: 0 0 50%;
-    width: 50%;
+    width: 100%;
     margin-top: 70px;
     padding: 0 30px;
 }
 
 .listItem {
     list-style: none;
-    text-align: right;
+    text-align: left;
     font-size: $base-size * 2;
     line-height: 1.4;
 }
-
-@media (max-width: 640px) {
-
-    .component {
-      width: 100%;
-    }
-
-    .listItem {
-        text-align: center;
-    }
-  
-  }

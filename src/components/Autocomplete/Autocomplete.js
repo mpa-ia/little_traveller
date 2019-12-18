@@ -142,7 +142,7 @@ class Autocomplete extends React.Component {
 
     return (
       <Fragment>
-        <div className={styles.container}>
+        <div>
           <input
             type="text"
             onChange={onChange}

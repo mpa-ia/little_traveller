@@ -1,10 +1,5 @@
 @import '../../styles/settings.scss';
 
-.container {
-    padding: 0 30px;
-    width: 50%;
-}
-
 input {
     border: 1px solid $color-dark-accent;
     padding: 0.5rem;
@@ -48,3 +43,12 @@ input {
 .suggestions li:not(:last-of-type) {
     border-bottom: 1px solid $color-dark-accent;
 }
+
+
+@media (max-width: 640px) {
+
+    .container {
+      width: 100%;
+    }
+  
+  }
