@@ -15,15 +15,13 @@ class MainPage extends React.Component {
     };
 
     componentDidMount() {
-        fetch('https://api.openaq.org/v1/locations?country[]=PL&country[]=DE&country[]=FR&country[]=ES&order_by[]=count&limit=1000')
+        fetch('https://api.openaq.org/v1/locations?country[]=PL&country[]=DE&country[]=FR&country[]=ES&order_by[]=count&sort=desc&limit=300')
         .then(res => res.json())
         .then(parsedRes => this.props.updateMeasurements(parsedRes.results));
     }
     
     render () {
         const {measurements} = this.props;
-        console.log(measurements);
-
         return (
             <Container>
                 <Section title='10 most polluted cities'>
