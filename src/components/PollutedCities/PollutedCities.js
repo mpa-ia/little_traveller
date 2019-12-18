@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './PollutedCities.scss';
+
 const PollutedCities = ({ cities }) => {
-    console.log(cities);
     return (
-        <ul>
-            {cities.map(a => (            
-                <li key={a.id}>{a.city}</li>
+        <ul className={styles.component}>
+            {cities.map(data => (            
+                <li className={styles.listItem} key={data.id}>{data.city}</li>
             ))}
         </ul>
         );
