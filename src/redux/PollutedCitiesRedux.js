@@ -10,8 +10,15 @@ export const getFilteredCities = ({measurements, userInput}) => {
     if (countryData == undefined) {
         console.log('No results found');
     } else {
-        output = output.filter(data => (data.country == countryData.code ));
+        output = output.filter(data => (data.country == countryData.code));
     }
+    
+    // remove duplicates
+    output = output.filter((data, index, self) => 
+        index === self.findIndex(d => (
+            d.city === data.city
+        ))
+    );
 
     return output;
 };
