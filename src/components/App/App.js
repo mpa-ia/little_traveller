@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../Header/Header';
-import MainPage from '../MainPage/MainPage';
+import MainPage from '../MainPage/MainPageContainer';
 import {pageContent} from '../../data/dataStore'
 
 import MainLayout from '../MainLayout/MainLayout';

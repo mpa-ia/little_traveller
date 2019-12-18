@@ -3,25 +3,32 @@ import { countries } from '../../data/dataStore';
 import Container from '../Container/Container.js';
 import Section from '../Section/Section.js';
 import Autocomplete from '../Autocomplete/AutocompleteContainer.js';
-import PollutedCities from '../PollutedCities/PollutedCities.js';
+import PollutedCities from '../PollutedCities/PollutedCitiesContainer.js';
+import PropTypes from 'prop-types';
+import { updateMeasurements } from '../../redux/MainPageRedux';
 
 class MainPage extends React.Component {
-    state = {
-        measurements: [],
+
+    static propTypes = {
+        measurements: PropTypes.array,
+        updateMeasurements: PropTypes.func,
     };
 
     componentDidMount() {
-        fetch('https://api.openaq.org/v1/locations?country[]=DE&country[]=PL&country[]=FR&country[]=ES')
+        fetch('https://api.openaq.org/v1/locations?country[]=PL&country[]=DE&country[]=FR&country[]=ES&order_by[]=count&limit=1000')
         .then(res => res.json())
-        .then(parsedRes => this.setState({measurements: parsedRes.results}));
+        .then(parsedRes => this.props.updateMeasurements(parsedRes.results));
     }
     
     render () {
+        const {measurements} = this.props;
+        console.log(measurements);
+
         return (
             <Container>
                 <Section title="Check Air Pollution in Europe">
                     <Autocomplete suggestions={countries} />
-                    <PollutedCities measurements={this.state.measurements}/> 
+                    <PollutedCities cities={measurements}/> 
                 </Section>
             </Container>
         );
