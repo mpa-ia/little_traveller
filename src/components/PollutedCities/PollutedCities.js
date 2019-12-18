@@ -5,14 +5,12 @@ const PollutedCities = ({ measurements }) => {
     console.log(measurements);
     return (
         <ul>
-            {measurements.country == /* state.userInput */'Spain' ? measurements.map(() => {
-                <li>
-                    {measurements.country}
-                </li>
-            }) : ''}
-    </ul>
-    );
-};
+            {measurements.filter(a => a.country == 'ES').map(a => (            
+                <li key={a.id}>{a.city}</li>
+            ))}
+        </ul>
+        );
+    };
 
 PollutedCities.propTypes = {
     measurements: PropTypes.array,
