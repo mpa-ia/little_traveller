@@ -1,9 +1,17 @@
+import { countries } from '../data/dataStore';
+
 export const getFilteredCities = ({measurements, userInput}) => {
     let output = measurements;
 
-    // filter by userInput
-    if(userInput == 'ES') {
-        output = output.filter(data => (data.country == userInput));
+    // find country data
+    const countryData = countries.find(data => data.country == userInput);
+
+    // filter data if countryData is found
+    if (countryData == undefined) {
+        console.log('No results found');
+    } else {
+        output = output.filter(data => (data.country == countryData.code ));
     }
+
     return output;
 };
