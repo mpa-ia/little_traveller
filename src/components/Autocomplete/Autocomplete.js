@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import PropTypes from "prop-types";
-import Button from '../Button/Button';
 
 import styles from './Autocomplete.scss';
 
@@ -60,10 +59,6 @@ class Autocomplete extends React.Component {
     });
     this.props.changeUserInput(e.currentTarget.innerText);
   };
-
-  handleSearch() {
-    // this.props.changeUserInput(this.state.userInput);
-  }
 
   // Event fired when the user presses a key down
   onKeyDown = e => {
@@ -153,10 +148,10 @@ class Autocomplete extends React.Component {
             onChange={onChange}
             onKeyDown={onKeyDown}
             value={userInput}
+            placeholder='Enter country...'
           />
           {suggestionsListComponent}
         </div>
-        <Button onClick={this.handleSearch}>Search</Button>
       </Fragment>
     );
   }
