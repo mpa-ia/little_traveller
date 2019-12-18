@@ -26,7 +26,7 @@ class MainPage extends React.Component {
 
         return (
             <Container>
-                <Section title="Check Air Pollution in Europe">
+                <Section title='10 most polluted cities'>
                     <Autocomplete suggestions={countries} />
                     <PollutedCities cities={measurements}/> 
                 </Section>
